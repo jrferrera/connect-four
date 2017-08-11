@@ -1,0 +1,18 @@
+#header
+	%h2
+		Connect Four: 
+		%span.current-player-name= session[:current_player]['first_name']
+		%span 's Turn
+		= button_to "End Game", end_game_path, method: :delete
+#board-container
+	%table#game-board
+		%tr
+			- for column in 0..6
+				%td.droppable{data: {column: column}} Drop
+		- for row in 0..5
+			%tr
+				- for column in 0..6
+					%td{id: "area-#{row}-#{column}", class: session[:grid]['matrix'][row][column].nil? ? "" : "player-#{session[:grid]['matrix'][row][column]}-color occupied", data: {row: row, column: column}}
+
+	#discs
+		.disc.draggable{data: {color: session[:current_player]['color']}}
