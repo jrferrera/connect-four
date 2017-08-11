@@ -1,0 +1,37 @@
+table#game-board {
+  float: left;
+  width: 500px;
+  height: 500px;
+
+  td {
+    border-style: solid;
+    text-align: center;
+
+    &.droppable {
+      border-style: none;
+      background-color: #D3D3D3;
+    }
+
+    &.player-1-color {
+      background-color: blue;
+    }
+
+    &.player-2-color {
+      background-color: red;
+    }
+  }
+}
+
+#discs {
+  float: left;
+  margin: 80px;
+
+  .disc {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+.droppable-area {
+  background-color: yellow !important;
+}
