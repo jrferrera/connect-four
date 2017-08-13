@@ -1,23 +1,33 @@
-#header
-	%h2
-		Connect Four: 
-		%span.current-player-name= session[:current_player]['first_name']
-		%span 's Turn
-		= button_to "End Game", end_game_path, method: :delete
-#board-container
-	%table#game-board
-		%tr
-			- for column in 0..6
-				%td.droppable{data: {column: column}} Drop
-		- for row in 0..5
-			%tr
-				- for column in 0..6
-					%td{id: "area-#{row}-#{column}", class: session[:grid]['matrix'][row][column].nil? ? "" : "player-#{session[:grid]['matrix'][row][column]}-color occupied", data: {row: row, column: column}}
-	#winner-display
-		%h2
-			Winner: 
-			%span#winner-name
-				- if not session[:game_winner].nil?
-					= session[:game_winner]['first_name']
-	#discs
-		.disc.draggable{data: {color: session[:current_player]['color']}}
+= render "layouts/header"
+
+- if session[:game_winner].nil?
+  .centered.row#disc-container
+    .column
+      .disc.draggable{data: {color: session[:current_player]['color']}}
+    .middle.aligned.column
+      %h3#current-player-name= session[:current_player]['first_name']
+
+- if session[:game_winner].nil?
+  .centered.row#winner-display
+    %h2
+      Winner: 
+      %span#winner-name
+- else
+  .centered.row
+    %h2
+      Winner: 
+      %span= session[:game_winner]['first_name']
+
+.centered.row#board-container
+  %table#game-board
+    - if session[:game_winner].nil?
+      %tr.droppable-area
+        - for column in 0..6
+          %td.droppable{data: {column: column}} drop
+    - for row in 0..5
+      %tr
+        - for column in 0..6
+          %td{id: "area-#{row}-#{column}", class: session[:grid]['matrix'][row][column].nil? ? "" : "player-#{session[:grid]['matrix'][row][column]}-color occupied", data: {row: row, column: column}}
+
+.centered.row
+  = button_to "End Game", end_game_path, method: :delete, class: "ui red button"

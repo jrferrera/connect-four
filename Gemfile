@@ -57,3 +57,4 @@ gem 'haml-rails'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'semantic-ui-sass'

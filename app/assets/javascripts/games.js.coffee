@@ -3,7 +3,7 @@ $(document).on "turbolinks:load", ->
 	$(".disc.draggable").css("background-color", $(".disc.draggable").data("color"))
 
 	$(".disc.draggable").draggable
-		containment: $("#board")
+		containment: $("body")
 		revert: true
 
 	$("#game-board .droppable").droppable
@@ -31,8 +31,10 @@ $(document).on "turbolinks:load", ->
 						occupied_area.css("background-color", color)
 						ui.draggable.data("color", data.current_player_color)
 						ui.draggable.css("background-color", data.current_player_color)
-						$("span.current-player-name").html(data.current_player_name)
+						$("#current-player-name").html(data.current_player_name)
 
 						if data.game_winner != null
-							$("span#winner-name").html(data.game_winner.first_name)
+							$("#disc-container").hide()
+							$(".droppable-area").hide()
 							$("#winner-display").show()
+							$("#winner-name").html(data.game_winner.first_name)

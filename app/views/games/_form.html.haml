@@ -1,0 +1,14 @@
+= form_tag games_path, class: "ui sixteen form" do
+	.field
+		= label_tag :player_one do
+			%i.blue.user.icon
+			Player 1
+		= text_field_tag :player_one, nil, required: true
+	.field
+		= label_tag :player_two do
+			%i.red.user.icon
+			Player 2
+		= text_field_tag :player_two, nil, required: true
+	= button_tag type: :submit, class: "ui green button" do
+		%i.play.icon
+		Start Game

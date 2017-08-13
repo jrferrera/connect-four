@@ -1,11 +1,5 @@
-%h2 Connect Four
-= form_tag games_path do
-	= label_tag :player_one, "Player 1 Name (Blue):"
-	= text_field_tag :player_one, nil, required: true
-	%br
-	%br
-	= label_tag :player_two, "Player 2 Name (Red):"
-	= text_field_tag :player_two, nil, required: true
-	%br
-	%br
-	= submit_tag "Start Game"
+.centered.sixteen.wide.row#game-form-container
+	.ten.wide.mobile.seven.wide.tablet.four.wide.computer.center.aligned.column
+		.ui.card
+			%h2 Connect Four
+			= render "games/form"
