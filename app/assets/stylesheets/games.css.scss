@@ -1,7 +1,7 @@
 table#game-board {
   float: left;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 
   td {
     border-style: solid;
@@ -22,16 +22,18 @@ table#game-board {
   }
 }
 
-#discs {
-  float: left;
-  margin: 80px;
+#board-container {
+  #discs {
+    float: left;
+    margin: 80px;
 
-  .disc {
-    width: 65px;
-    height: 65px;
+    .disc {
+      width: 65px;
+      height: 65px;
+    }
   }
-}
 
-.droppable-area {
-  background-color: yellow !important;
+  .droppable-area {
+    background-color: yellow !important;
+  }
 }

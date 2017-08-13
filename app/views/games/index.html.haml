@@ -13,6 +13,11 @@
 			%tr
 				- for column in 0..6
 					%td{id: "area-#{row}-#{column}", class: session[:grid]['matrix'][row][column].nil? ? "" : "player-#{session[:grid]['matrix'][row][column]}-color occupied", data: {row: row, column: column}}
-
+	#winner-display
+		%h2
+			Winner: 
+			%span#winner-name
+				- if not session[:game_winner].nil?
+					= session[:game_winner]['first_name']
 	#discs
 		.disc.draggable{data: {color: session[:current_player]['color']}}

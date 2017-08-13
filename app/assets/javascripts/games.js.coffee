@@ -1,4 +1,5 @@
 $(document).on "turbolinks:load", ->
+	$("#winner-display").hide()
 	$(".disc.draggable").css("background-color", $(".disc.draggable").data("color"))
 
 	$(".disc.draggable").draggable
@@ -31,3 +32,7 @@ $(document).on "turbolinks:load", ->
 						ui.draggable.data("color", data.current_player_color)
 						ui.draggable.css("background-color", data.current_player_color)
 						$("span.current-player-name").html(data.current_player_name)
+
+						if data.game_winner != null
+							$("span#winner-name").html(data.game_winner.first_name)
+							$("#winner-display").show()
