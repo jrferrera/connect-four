@@ -58,6 +58,8 @@ class Grid
       upward_diagonal_matches += 1
     end
 
+    upward_diagonal_matches += 1
+
     # Check downward diagonal
     start_row = row - 1
     start_column = column - 1
@@ -76,9 +78,11 @@ class Grid
       break if matrix[start_row][start_column] != player['number']
       start_row += 1
       start_column += 1
-      upward_diagonal_matches += 1
+      downward_diagonal_matches += 1
     end
 
-  	(horizontal_matches >= 4 or vertical_matches >= 4 or upward_diagonal_matches >= 3 or downward_diagonal_matches >= 3) ? player : nil
+    downward_diagonal_matches += 1
+
+  	(horizontal_matches >= 4 or vertical_matches >= 4 or upward_diagonal_matches >= 4 or downward_diagonal_matches >= 4) ? player : nil
   end
 end
